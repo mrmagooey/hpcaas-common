@@ -38,16 +38,31 @@ func (cs CodeState) String() string {
 	return CodeStates[int(cs)]
 }
 
+// ResultState represents the state of the results coming from the container
+type ResultState int
+
 // The set of result states
 const (
-	ResultWaitingState uint8 = iota + 1
+	ResultWaitingState ResultState = iota
 	ResultUploadingState
 	ResultsUploadingFinishedState
 	ResultErrorState
 )
 
+// ResultStates the names of the states
+var ResultStates = []string{
+	"ResultWaitingState",
+	"ResultUploadingState",
+	"ResultsUploadingFinishedState",
+	"ResultErrorState",
+}
+
+func (rs ResultState) String() string {
+	return ResultStates[int(rs)]
+}
+
 // The set of user code start states
 const (
-	StartedByDaemonState uint8 = iota + 1
+	StartedByDaemonState int = iota
 	StartedExternallyState
 )
