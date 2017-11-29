@@ -11,6 +11,7 @@ const (
 type CodeState int
 
 // The set of user code states
+// these are all mutually exclusive
 const (
 	CodeWaitingState CodeState = iota
 	CodeMissingState
@@ -61,8 +62,21 @@ func (rs ResultState) String() string {
 	return ResultStates[int(rs)]
 }
 
+// StartedState new type so that we can add our methods
+type StartedState int
+
 // The set of user code start states
 const (
-	StartedByDaemonState int = iota
+	StartedByDaemonState StartedState = iota
 	StartedExternallyState
 )
+
+// HowStartedStates names
+var HowStartedStates = []string{
+	"StartedByDaemonState",
+	"StartedExternallyState",
+}
+
+func (rs StartedState) String() string {
+	return HowStartedStates[int(rs)]
+}
