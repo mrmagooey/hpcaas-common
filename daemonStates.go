@@ -1,11 +1,25 @@
 package common
 
+// DaemonState new type so that we can add our methods
+type DaemonState int
+
 // The set of possible daemon states
 const (
-	DaemonStartedState uint8 = iota
+	DaemonStartedState DaemonState = iota
 	DaemonRunningState
 	DaemonErrorState
 )
+
+// DaemonStates A slice containing all DaemonState strings
+var DaemonStates = []string{
+	"DaemonStartedState",
+	"DaemonRunningState",
+	"DaemonErrorState",
+}
+
+func (cs DaemonState) String() string {
+	return DaemonStates[int(cs)]
+}
 
 // CodeState new type so that we can add our methods
 type CodeState int
