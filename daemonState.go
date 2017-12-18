@@ -13,7 +13,6 @@ type extraPort struct {
 // DaemonState What the daemon stores
 type DaemonState struct {
 	CodeParams        *map[string]string  `json:"codeParams"`
-	SharedFileSystem  *bool               `json:"sharedFileSystem"`
 	ExtraPorts        *[]extraPort        `json:"extraPorts"`
 	CodeName          *string             `json:"codeName"`
 	CodeArguments     *[]string           `json:"codeArguments"`
