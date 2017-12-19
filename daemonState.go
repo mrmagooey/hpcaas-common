@@ -10,8 +10,8 @@ type extraPort struct {
 	ExternalContainerPorts ContainerAddresses
 }
 
-// DaemonState What the daemon stores
-type DaemonState struct {
+// DaemonInfo What the daemon stores
+type DaemonInfo struct {
 	CodeParams        *map[string]string  `json:"codeParams"`
 	ExtraPorts        *[]extraPort        `json:"extraPorts"`
 	CodeName          *string             `json:"codeName"`
