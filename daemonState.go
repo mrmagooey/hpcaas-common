@@ -1,35 +1,21 @@
 package common
 
-// ContainerAddresses maps the container id to a string in the format ip<port>
-type ContainerAddresses map[int]string
+// DaemonState type
+//go:generate stringer -type=DaemonState
+type DaemonState int
 
-// and what the address:port is for every other container
-type extraPort struct {
-	InternalPort           int
-	Name                   string
-	ExternalContainerPorts ContainerAddresses
-}
-
-// DaemonInfo What the daemon stores
-type DaemonInfo struct {
-	CodeParams        *map[string]string  `json:"codeParams"`
-	ExtraPorts        *[]extraPort        `json:"extraPorts"`
-	CodeName          *string             `json:"codeName"`
-	CodeArguments     *[]string           `json:"codeArguments"`
-	CodeStatus        *CodeStatus         `json:"codeState"`
-	DaemonStatus      *DaemonStatus       `json:"daemonState"`
-	ResultStatus      *ResultStatus       `json:"resultState"`
-	CodeStartedStatus *StartedStatus      `json:"codeStartedMethod"`
-	SSHAddresses      *ContainerAddresses `json:"sshAddresses"`
-	WorldRank         *int                `json:"worldRank"`
-	WorldSize         *int                `json:"worldSize"`
-	ResultsDirectory  *string             `json:"resultsDirectory"`
-	ResultsURL        *string             `json:"resultsUrl"`
-	CodeExitStatus    *int                `json:"codeExitStatus"`
-	AuthorizationKey  *string             `json:"authorizationKey"`
-	CodeStdout        *string             `json:"codeStdout"`
-	CodeStderr        *string             `json:"codeStderr"`
-	CodePID           *int                `json:"codePID"`
-	SSHPrivateKey     *string             `json:"sshPrivateKey"`
-	SSHPublicKey      *string             `json:"sshPublicKey"`
-}
+// States
+const (
+	Initializing DaemonState = iota
+	Preparation
+	UpdateInProgress
+	CodeRunning
+	CodeBeingKilled
+	CodeFailedToKill
+	CodeKilled
+	CodeStopped
+	CodeError
+	ResultUploadingState
+	ResultUploadingErrorState
+	ResultUploadingCompleteState
+)

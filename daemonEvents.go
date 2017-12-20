@@ -1,9 +1,21 @@
 package common
 
-// DaemonEvent codifies the manner in which the daemon can be moved into different statuses
-type DaemonEvent int
+// Event type
+//go:generate stringer -type=Event
+type Event int
 
-// List of daemon events
+// Events const
 const (
-	DaemonEventRunCode DaemonEvent = iota
+	InitializationCompleteEvent Event = iota
+	StartCommandReceived
+	KillCommandReceived
+	DaemonFailedToKillCode
+	DaemonKilledCode
+	UploadCommandReceived
+	UpdateReceived
+	UpdateFinished
+	ResultUploadingErrorEvent
+	ResultUploadingFinishedEvent
+	CodeFinishesOk
+	CodeFinishesError
 )
