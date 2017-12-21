@@ -4,9 +4,9 @@ package common
 
 import "strconv"
 
-const _DaemonState_name = "InitializingPreparationUpdateInProgressCodeRunningCodeBeingKilledCodeFailedToKillCodeKilledCodeStoppedCodeErrorResultUploadingStateResultUploadingErrorStateResultUploadingCompleteState"
+const _DaemonState_name = "InitializingListeningForInfoCodeInfoReceivedReadyToStartCodeStartingCodeCodeRunningCodeBeingKilledCodeFailedToKillCodeKilledCodeStoppedCodeErrorCodeErrorNotStartedResultUploadingStateResultUploadingErrorStateResultUploadingCompleteState"
 
-var _DaemonState_index = [...]uint8{0, 12, 23, 39, 50, 65, 81, 91, 102, 111, 131, 156, 184}
+var _DaemonState_index = [...]uint8{0, 12, 28, 44, 60, 72, 83, 98, 114, 124, 135, 144, 163, 183, 208, 236}
 
 func (i DaemonState) String() string {
 	if i < 0 || i >= DaemonState(len(_DaemonState_index)-1) {

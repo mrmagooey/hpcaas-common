@@ -7,14 +7,22 @@ type DaemonState int
 // States
 const (
 	Initializing DaemonState = iota
-	Preparation
-	UpdateInProgress
+
+	ListeningForInfo
+	CodeInfoReceived
+	// RuntimeInfoReceived
+
+	ReadyToStartCode
+	StartingCode
 	CodeRunning
 	CodeBeingKilled
 	CodeFailedToKill
 	CodeKilled
 	CodeStopped
+
 	CodeError
+	CodeErrorNotStarted
+
 	ResultUploadingState
 	ResultUploadingErrorState
 	ResultUploadingCompleteState

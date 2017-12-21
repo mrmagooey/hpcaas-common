@@ -12,21 +12,28 @@ type extraPort struct {
 
 // DaemonInfo What the daemon stores
 type DaemonInfo struct {
-	CodeParams       *map[string]string  `json:"codeParams"`
-	ExtraPorts       *[]extraPort        `json:"extraPorts"`
-	CodeName         *string             `json:"codeName"`
-	CodeArguments    *[]string           `json:"codeArguments"`
-	DaemonState      *DaemonState        `json:"daemonState"`
-	SSHAddresses     *ContainerAddresses `json:"sshAddresses"`
-	WorldRank        *int                `json:"worldRank"`
-	WorldSize        *int                `json:"worldSize"`
-	ResultsDirectory *string             `json:"resultsDirectory"`
-	ResultsURL       *string             `json:"resultsUrl"`
-	CodeExitStatus   *int                `json:"codeExitStatus"`
-	AuthorizationKey *string             `json:"authorizationKey"`
-	CodeStdout       *string             `json:"codeStdout"`
-	CodeStderr       *string             `json:"codeStderr"`
-	CodePID          *int                `json:"codePID"`
-	SSHPrivateKey    *string             `json:"sshPrivateKey"`
-	SSHPublicKey     *string             `json:"sshPublicKey"`
+	// The
+	DaemonState *DaemonState `json:"daemonState"`
+
+	// updated by the orchestrator
+	CodeParams    *map[string]string `json:"codeParams"`
+	CodeName      *string            `json:"codeName"`
+	CodeArguments *[]string          `json:"codeArguments"`
+
+	// only written by the daemon
+	CodeExitStatus *int    `json:"codeExitStatus"`
+	CodeStdout     *string `json:"codeStdout"`
+	CodeStderr     *string `json:"codeStderr"`
+	CodePID        *int    `json:"codePID"`
+
+	// updated by the orchestrator
+	ExtraPorts    *[]extraPort        `json:"extraPorts"`
+	SSHAddresses  *ContainerAddresses `json:"sshAddresses"`
+	WorldRank     *int                `json:"worldRank"`
+	WorldSize     *int                `json:"worldSize"`
+	SSHPrivateKey *string             `json:"sshPrivateKey"`
+	SSHPublicKey  *string             `json:"sshPublicKey"`
+
+	// written on startup, pulled from env variables
+	AuthorizationKey *string `json:"authorizationKey"`
 }

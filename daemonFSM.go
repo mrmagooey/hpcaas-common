@@ -6,24 +6,39 @@ import "github.com/looplab/fsm"
 // only an fsm around the code lifecycle
 var DaemonFSM = fsm.Events{
 	{
-		Name: InitializationCompleteEvent.String(),
+		Name: InitializationComplete.String(),
 		Src:  []string{Initializing.String()},
-		Dst:  Preparation.String(),
+		Dst:  ListeningForInfo.String(),
 	},
 	{
-		Name: UpdateReceived.String(),
-		Src:  []string{Preparation.String()},
-		Dst:  UpdateInProgress.String(),
+		Name: ReceiveCodeInfo.String(),
+		Src:  []string{ListeningForInfo.String()},
+		Dst:  CodeInfoReceived.String(),
 	},
 	{
-		Name: UpdateFinished.String(),
-		Src:  []string{UpdateInProgress.String()},
-		Dst:  Preparation.String(),
+		Name: ReceiveRuntimeInfo.String(),
+		Src:  []string{CodeInfoReceived.String()},
+		Dst:  ReadyToStartCode.String(),
 	},
+	// {
+	// 	Name: ReadyToStart.String(),
+	// 	Src:  []string{RuntimeInfoReceived.String()},
+	// 	Dst:  ReadyToStartCode.String(),
+	// },
 	{
 		Name: StartCommandReceived.String(),
-		Src:  []string{Preparation.String()},
+		Src:  []string{ReadyToStartCode.String()},
+		Dst:  StartingCode.String(),
+	},
+	{
+		Name: CodeSuccessfullyStarted.String(),
+		Src:  []string{StartingCode.String()},
 		Dst:  CodeRunning.String(),
+	},
+	{
+		Name: CodeNotStarted.String(),
+		Src:  []string{StartingCode.String()},
+		Dst:  CodeErrorNotStarted.String(),
 	},
 	{
 		Name: CodeFinishesOk.String(),
@@ -41,12 +56,12 @@ var DaemonFSM = fsm.Events{
 		Dst:  CodeBeingKilled.String(),
 	},
 	{
-		Name: DaemonFailedToKillCode.String(),
+		Name: FailedToKillCode.String(),
 		Src:  []string{CodeBeingKilled.String()},
 		Dst:  CodeFailedToKill.String(),
 	},
 	{
-		Name: DaemonKilledCode.String(),
+		Name: KilledCode.String(),
 		Src:  []string{CodeBeingKilled.String()},
 		Dst:  CodeKilled.String(),
 	},
@@ -61,14 +76,14 @@ var DaemonFSM = fsm.Events{
 		Dst: ResultUploadingState.String(),
 	},
 	{
-		Name: ResultUploadingFinishedEvent.String(),
+		Name: ResultUploadingFinished.String(),
 		Src: []string{
 			ResultUploadingState.String(),
 		},
 		Dst: ResultUploadingCompleteState.String(),
 	},
 	{
-		Name: ResultUploadingErrorEvent.String(),
+		Name: ResultUploadingError.String(),
 		Src: []string{
 			ResultUploadingState.String(),
 		},

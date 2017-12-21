@@ -6,16 +6,25 @@ type Event int
 
 // Events const
 const (
-	InitializationCompleteEvent Event = iota
+	InitializationComplete Event = iota
+
+	ReceiveCodeInfo
+	ReceiveRuntimeInfo
+
+	// orchestrator initiated events
+	ReadyToStart
 	StartCommandReceived
 	KillCommandReceived
-	DaemonFailedToKillCode
-	DaemonKilledCode
 	UploadCommandReceived
-	UpdateReceived
-	UpdateFinished
-	ResultUploadingErrorEvent
-	ResultUploadingFinishedEvent
+
+	CodeSuccessfullyStarted
+	CodeNotStarted
+
+	FailedToKillCode
+	KilledCode
+
+	ResultUploadingError
+	ResultUploadingFinished
 	CodeFinishesOk
 	CodeFinishesError
 )
