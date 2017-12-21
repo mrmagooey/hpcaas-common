@@ -1,12 +1,12 @@
 package common
 
-// Event type
-//go:generate stringer -type=Event
-type Event int
+// DaemonEvent type
+//go:generate stringer -type=DaemonEvent
+type DaemonEvent int
 
-// Events const
+// DaemonEvents const
 const (
-	InitializationComplete Event = iota
+	InitializationComplete DaemonEvent = iota
 
 	ReceiveCodeInfo
 	ReceiveRuntimeInfo
