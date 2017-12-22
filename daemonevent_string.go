@@ -4,9 +4,9 @@ package common
 
 import "strconv"
 
-const _DaemonEvent_name = "InitializationCompleteReceiveCodeInfoReceiveRuntimeInfoReadyToStartStartCommandReceivedKillCommandReceivedUploadCommandReceivedCodeSuccessfullyStartedCodeNotStartedFailedToKillCodeKilledCodeResultUploadingErrorResultUploadingFinishedCodeFinishesOkCodeFinishesError"
+const _DaemonEvent_name = "InitializationCompleteCommandUpdateCodeInfoCommandUpdateRuntimeInfoCommandStartCommandKillCommandUploadCodeSuccessfullyStartedCodeNotStartedFailedToKillCodeKilledCodeResultUploadingErrorResultUploadingFinishedCodeFinishesOkCodeFinishesError"
 
-var _DaemonEvent_index = [...]uint16{0, 22, 37, 55, 67, 87, 106, 127, 150, 164, 180, 190, 210, 233, 247, 264}
+var _DaemonEvent_index = [...]uint8{0, 22, 43, 67, 79, 90, 103, 126, 140, 156, 166, 186, 209, 223, 240}
 
 func (i DaemonEvent) String() string {
 	if i < 0 || i >= DaemonEvent(len(_DaemonEvent_index)-1) {

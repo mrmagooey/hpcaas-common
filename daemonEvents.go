@@ -8,14 +8,11 @@ type DaemonEvent int
 const (
 	InitializationComplete DaemonEvent = iota
 
-	ReceiveCodeInfo
-	ReceiveRuntimeInfo
-
-	// orchestrator initiated events
-	ReadyToStart
-	StartCommandReceived
-	KillCommandReceived
-	UploadCommandReceived
+	CommandUpdateCodeInfo
+	CommandUpdateRuntimeInfo
+	CommandStart
+	CommandKill
+	CommandUpload
 
 	CodeSuccessfullyStarted
 	CodeNotStarted

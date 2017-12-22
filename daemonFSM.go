@@ -11,22 +11,17 @@ var DaemonFSM = fsm.Events{
 		Dst:  ListeningForInfo.String(),
 	},
 	{
-		Name: ReceiveCodeInfo.String(),
+		Name: CommandUpdateCodeInfo.String(),
 		Src:  []string{ListeningForInfo.String()},
 		Dst:  CodeInfoReceived.String(),
 	},
 	{
-		Name: ReceiveRuntimeInfo.String(),
+		Name: CommandUpdateRuntimeInfo.String(),
 		Src:  []string{CodeInfoReceived.String()},
 		Dst:  ReadyToStartCode.String(),
 	},
-	// {
-	// 	Name: ReadyToStart.String(),
-	// 	Src:  []string{RuntimeInfoReceived.String()},
-	// 	Dst:  ReadyToStartCode.String(),
-	// },
 	{
-		Name: StartCommandReceived.String(),
+		Name: CommandStart.String(),
 		Src:  []string{ReadyToStartCode.String()},
 		Dst:  StartingCode.String(),
 	},
@@ -51,7 +46,7 @@ var DaemonFSM = fsm.Events{
 		Dst:  CodeError.String(),
 	},
 	{
-		Name: KillCommandReceived.String(),
+		Name: CommandKill.String(),
 		Src:  []string{CodeRunning.String()},
 		Dst:  CodeBeingKilled.String(),
 	},
@@ -66,7 +61,7 @@ var DaemonFSM = fsm.Events{
 		Dst:  CodeKilled.String(),
 	},
 	{
-		Name: UploadCommandReceived.String(),
+		Name: CommandUpload.String(),
 		Src: []string{
 			CodeKilled.String(),
 			CodeError.String(),
