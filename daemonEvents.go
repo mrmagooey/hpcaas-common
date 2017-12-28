@@ -8,20 +8,20 @@ type DaemonEvent int
 const (
 	InitializationComplete DaemonEvent = iota
 
-	CommandUpdateCodeInfo
-	CommandUpdateRuntimeInfo
-	CommandStart
-	CommandKill
-	CommandUpload
+	DaemonEventCommandUpdateCodeInfo
+	DaemonEventCommandUpdateRuntimeInfo
+	DaemonEventCommandStart
+	DaemonEventCommandKill
+	DaemonEventCommandUpload
 
-	CodeSuccessfullyStarted
-	CodeNotStarted
+	DaemonEventCodeSuccessfullyStarted
+	DaemonEventCodeNotStarted
 
-	FailedToKillCode
-	KilledCode
+	DaemonEventFailedToKillCode
+	DaemonEventKilledCode
 
-	ResultUploadingError
-	ResultUploadingFinished
-	CodeFinishesOk
-	CodeFinishesError
+	DaemonEventResultUploadingError
+	DaemonEventResultUploadingFinished
+	DaemonEventCodeFinishesOk
+	DaemonEventCodeFinishesError
 )

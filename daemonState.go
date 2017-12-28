@@ -4,26 +4,26 @@ package common
 //go:generate stringer -type=DaemonState
 type DaemonState int
 
-// States
+// Daemon States
 const (
-	Initializing DaemonState = iota
+	DaemonStateInitializing DaemonState = iota
 
-	ListeningForInfo
-	CodeInfoReceived
+	DaemonStateListeningForInfo
+	DaemonStateCodeInfoReceived
 	// RuntimeInfoReceived
 
-	ReadyToStartCode
-	StartingCode
-	CodeRunning
-	CodeBeingKilled
-	CodeFailedToKill
-	CodeKilled
-	CodeStopped
+	DaemonStateReadyToStartCode
+	DaemonStateStartingCode
+	DaemonStateCodeRunning
+	DaemonStateCodeBeingKilled
+	DaemonStateCodeFailedToKill
+	DaemonStateCodeKilled
+	DaemonStateCodeStopped
 
-	CodeError
-	CodeErrorNotStarted
+	DaemonStateCodeError
+	DaemonStateCodeErrorNotStarted
 
-	ResultUploadingState
+	DaemonStateResultUploadingState
 	ResultUploadingErrorState
 	ResultUploadingCompleteState
 )
